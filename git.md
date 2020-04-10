@@ -54,6 +54,11 @@
 	```
 	git checkout branchname
 	```
+* 简写：
+
+	```
+	git checkout -b branchname
+	```
 
 * 在新分支上提交代码
 
@@ -84,6 +89,15 @@
 	
 	```
 	git merge branchname
+	```
+
+	* 当前分支合并其他分支上的更新，和上述操作一致
+	
+	```
+	git checkout 工作分支
+	
+	// 合并其他分支上的更新
+	git merge master 
 	```
 
 * 第三步：分支合并后若想删除分支
