@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>节奏型 · wxgBlog</title>
+        <title>Array · wxgBlog</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -51,8 +51,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="string.html" />
     
-    <link rel="prev" href="readme.html" />
+    
+    <link rel="prev" href="js.html" />
     
 
     </head>
@@ -239,9 +241,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../programExp/readme.html">
+        <li class="chapter " data-level="1.3" data-path="readme.html">
             
-                <a href="../programExp/readme.html">
+                <a href="readme.html">
             
                     
                     编程实例
@@ -253,9 +255,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../programExp/js.html">
+        <li class="chapter " data-level="1.3.1" data-path="js.html">
             
-                <a href="../programExp/js.html">
+                <a href="js.html">
             
                     
                     JS
@@ -266,9 +268,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../programExp/array.html">
+        <li class="chapter active" data-level="1.3.2" data-path="array.html">
             
-                <a href="../programExp/array.html">
+                <a href="array.html">
             
                     
                     Array
@@ -279,9 +281,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../programExp/string.html">
+        <li class="chapter " data-level="1.3.3" data-path="string.html">
             
-                <a href="../programExp/string.html">
+                <a href="string.html">
             
                     
                     String
@@ -483,9 +485,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="readme.html">
+        <li class="chapter " data-level="1.9" data-path="../AfricanDrum/readme.html">
             
-                <a href="readme.html">
+                <a href="../AfricanDrum/readme.html">
             
                     
                     非洲鼓
@@ -497,9 +499,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.9.1" data-path="rhythmType.html">
+        <li class="chapter " data-level="1.9.1" data-path="../AfricanDrum/rhythmType.html">
             
-                <a href="rhythmType.html">
+                <a href="../AfricanDrum/rhythmType.html">
             
                     
                     节奏型
@@ -545,7 +547,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >节奏型</a>
+        <a href=".." >Array</a>
     </h1>
 </div>
 
@@ -560,11 +562,105 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x8282;&#x594F;&#x578B;">&#x8282;&#x594F;&#x578B;</h3>
-<ul>
-<li>123</li>
-</ul>
+                                <h1 id="&#x6570;&#x7EC4;&#x76F8;&#x5173;&#x95EE;&#x9898;">&#x6570;&#x7EC4;&#x76F8;&#x5173;&#x95EE;&#x9898;</h1>
+<h3 id="&#x6570;&#x7EC4;&#x6241;&#x5E73;&#x5316;">&#x6570;&#x7EC4;&#x6241;&#x5E73;&#x5316;</h3>
+<blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x9012;&#x5F52;</p>
+</blockquote>
+<pre><code>function fun(arg) {
 
+    let arr = [];
+    arg.forEach((v, i) =&gt; {
+
+      if (Array.isArray(v)) {
+        arr = arr.concat(fun(v));
+      } else {
+        arr.push(v);
+      }
+    })
+
+    return arr;
+
+}
+</code></pre><blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A; array.reduce</p>
+</blockquote>
+<pre><code>/**
+ * array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+ * total: &#x521D;&#x59CB;&#x503C;&#xFF0F;&#x5F53;&#x524D;&#x8BA1;&#x7B97;&#x540E;&#x7684;&#x503C;
+ * currentValue &#x5F53;&#x524D;&#x503C;
+ * initialValue &#x521D;&#x59CB;&#x503C;
+ */
+  function fun(arg) {
+
+    return arg.reduce((res, item) =&gt; {
+      return  res.concat(Array.isArray(item) ? fun(item) : item);
+    }, []);
+
+  }
+</code></pre><blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E09;&#xFF1A;Array.toString &#x5C06;&#x6570;&#x7EC4;&#x8F6C;&#x5316;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x518D;&#x8F6C;&#x5316;&#x4E3A;&#x6570;&#x7EC4;</p>
+</blockquote>
+<pre><code>  function fun(arg) {
+
+    return arg.toString().split(&apos;,&apos;).map((v) =&gt; {
+      return parseInt(v);
+    });
+
+  }
+</code></pre><blockquote>
+<p>&#x65B9;&#x6CD5;&#x56DB;&#xFF1A;Array.join &#x539F;&#x7406;&#x540C;&#x4E09;</p>
+</blockquote>
+<pre><code>    function fun(arg) {
+
+        return arg.join(&apos;,&apos;).split(&apos;,&apos;).map((v) =&gt; {
+          return parseInt(v);
+        });;
+
+    }
+</code></pre><blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E94;&#xFF1A;Array.some &#x904D;&#x5386;&#x5224;&#x65AD;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#xFF0C;&#x76F4;&#x5230;&#x4E0D;&#x662F;&#x6570;&#x7EC4;&#x4E3A;&#x6B62;</p>
+</blockquote>
+<pre><code>// exp : [1, 2, 3, [4,[7], 5], 6]
+// &#x7B2C;&#x4E00;&#x6B21; &#x904D;&#x5386; arg &#x7ED3;&#x679C;&#x4E3A; [1, 2, 3, 4, [7], 5, 6]
+// &#x7B2C;&#x4E8C;&#x6B21; &#x904D;&#x5386; arg &#x7ED3;&#x679C;&#x4E3A; [1, 2, 3, 4, 7, 5, 6]
+// concat &#x8FDE;&#x63A5;&#x53EF;&#x4EE5;&#x4F20;&#x9012;&#x591A;&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;&#x6570;&#x7EC4;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x662F;&#x5177;&#x4F53;&#x7684;&#x503C;
+  function fun(arg) {
+
+    while(arg.some(item =&gt; Array.isArray(item))) {
+
+      arg = [].concat(...arg);
+    }
+
+    return arg;
+
+  }
+</code></pre><h3 id="&#x6570;&#x7EC4;&#x53BB;&#x91CD;">&#x6570;&#x7EC4;&#x53BB;&#x91CD;</h3>
+<blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;Array.includes/indexOf</p>
+</blockquote>
+<pre><code>function fun(arg) {
+
+    let arr = [];
+
+    arg.forEach((v, i) =&gt; {
+      if (!arr.includes(v)) {
+        arr.push(v);
+      }
+    })
+
+    return arr;
+
+}
+</code></pre><blockquote>
+<p>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A; set</p>
+</blockquote>
+<pre><code>function fun(arg) {
+
+    return [...new Set(arg)];
+
+}
+</code></pre>
                                 
                                 </section>
                             
@@ -591,10 +687,14 @@
 
             
                 
-                <a href="readme.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 非洲鼓">
+                <a href="js.html" class="navigation navigation-prev " aria-label="Previous page: JS">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="string.html" class="navigation navigation-next " aria-label="Next page: String">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -603,7 +703,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"节奏型","level":"1.9.1","depth":2,"previous":{"title":"非洲鼓","level":"1.9","depth":1,"path":"AfricanDrum/readme.md","ref":"AfricanDrum/readme.md","articles":[{"title":"节奏型","level":"1.9.1","depth":2,"path":"AfricanDrum/rhythmType.md","ref":"AfricanDrum/rhythmType.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":"https://wangxiaogang0629.github.io/blog/index.html"}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"AfricanDrum/rhythmType.md","mtime":"2020-04-17T07:03:37.869Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-17T08:02:11.608Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Array","level":"1.3.2","depth":2,"next":{"title":"String","level":"1.3.3","depth":2,"path":"programExp/string.md","ref":"programExp/string.md","articles":[]},"previous":{"title":"JS","level":"1.3.1","depth":2,"path":"programExp/js.md","ref":"programExp/js.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":"https://wangxiaogang0629.github.io/blog/index.html"}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"programExp/array.md","mtime":"2020-04-17T07:03:37.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-17T08:02:11.608Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

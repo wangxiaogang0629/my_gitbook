@@ -125,6 +125,19 @@
 	* 使用图形化工具解决冲突 `git mergetool`
 	* 冲突解决后 使用 `git commit` 来完成合并并提交
 
+## git 常用命令
+* `git fetch`			从远程获取其他用户 push 上来的新分支
+* `git remote -v` 		查看远程 git 库地址
+* `git stash` 			将会把当前目录和 index 中的所有改动(但不包括未 track 的文件)压入一个栈,然后留给你一个 clean 的工作状态,即处于上一次最新提交处.
+* `git stash apply` 	取出 stash 中的上一个项目 (stash@{0}),并且应用于当前的工作目录.也可以指定别的项目,比如 git stash apply stash@{1}.
+* `git stash drop`		删除上一个,也可指定参数删除指定的一个项目.
+* `git branch` 查看 git 分支
+* `git branch -a` 查看远程所有分支
+
+## git 本地已经修改，但需要切换git的push分支
+* add 但不 commit，可以 stash，然后 checkout 回来之后 stash apply，在 commit，提交到当前分支
+* add 但不 commit，也不 stash，直接 checkout，然后再 commit 的话，记录就在切换分支下面。
+
 ## 忽略文件 .gitignore
 
 > 有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件
