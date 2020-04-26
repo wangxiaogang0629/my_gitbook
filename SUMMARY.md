@@ -25,8 +25,8 @@
     * [使用](node/node.md)
     * [npm](node/npm.md)
 
-* [Git 使用](GitUse/git.md)
-    * [使用教程](GitUse/git.md)
+* [Git 使用](Gituse/git.md)
+    * [使用教程](Gituse/git.md)
 
 * [GitBook](GitBookUse/README.md)
     * [使用教程](GitBookUse/GitBookUse.md)
