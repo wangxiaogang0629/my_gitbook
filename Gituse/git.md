@@ -125,6 +125,24 @@
 	* 使用图形化工具解决冲突 `git mergetool`
 	* 冲突解决后 使用 `git commit` 来完成合并并提交
 
+## git 版本回退
+
+* 第一步
+
+	```
+	 `git log` 查看当前分支的提交记录 找到需要回退的版本id（commitID）
+	```
+* 第二步
+
+	```
+	 `git reset --hard HEAD` HEAD 需要回退的版本commitID
+	```
+
+* 第三步
+
+	```
+	 `git push origin branch --force` 强推至回退分支
+	```
 ## git 常用命令
 * `git fetch`			从远程获取其他用户 push 上来的新分支
 * `git remote -v` 		查看远程 git 库地址

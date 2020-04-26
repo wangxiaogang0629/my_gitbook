@@ -656,8 +656,18 @@ git merge master
 </ul>
 </li>
 </ul>
-<h2 id="git-&#x5E38;&#x7528;&#x547D;&#x4EE4;">git &#x5E38;&#x7528;&#x547D;&#x4EE4;</h2>
+<h2 id="git-&#x7248;&#x672C;&#x56DE;&#x9000;">git &#x7248;&#x672C;&#x56DE;&#x9000;</h2>
 <ul>
+<li><p>&#x7B2C;&#x4E00;&#x6B65;</p>
+<pre><code>   `git log` &#x67E5;&#x770B;&#x5F53;&#x524D;&#x5206;&#x652F;&#x7684;&#x63D0;&#x4EA4;&#x8BB0;&#x5F55; &#x627E;&#x5230;&#x9700;&#x8981;&#x56DE;&#x9000;&#x7684;&#x7248;&#x672C;id&#xFF08;commitID&#xFF09;
+</code></pre></li>
+<li><p>&#x7B2C;&#x4E8C;&#x6B65;</p>
+<pre><code>   `git reset --hard HEAD` HEAD &#x9700;&#x8981;&#x56DE;&#x9000;&#x7684;&#x7248;&#x672C;commitID
+</code></pre></li>
+<li><p>&#x7B2C;&#x4E09;&#x6B65;</p>
+<pre><code>   `git push origin branch --force` &#x5F3A;&#x63A8;&#x81F3;&#x56DE;&#x9000;&#x5206;&#x652F;
+</code></pre><h2 id="git-&#x5E38;&#x7528;&#x547D;&#x4EE4;">git &#x5E38;&#x7528;&#x547D;&#x4EE4;</h2>
+</li>
 <li><code>git fetch</code>            &#x4ECE;&#x8FDC;&#x7A0B;&#x83B7;&#x53D6;&#x5176;&#x4ED6;&#x7528;&#x6237; push &#x4E0A;&#x6765;&#x7684;&#x65B0;&#x5206;&#x652F;</li>
 <li><code>git remote -v</code>         &#x67E5;&#x770B;&#x8FDC;&#x7A0B; git &#x5E93;&#x5730;&#x5740;</li>
 <li><code>git stash</code>             &#x5C06;&#x4F1A;&#x628A;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x548C; index &#x4E2D;&#x7684;&#x6240;&#x6709;&#x6539;&#x52A8;(&#x4F46;&#x4E0D;&#x5305;&#x62EC;&#x672A; track &#x7684;&#x6587;&#x4EF6;)&#x538B;&#x5165;&#x4E00;&#x4E2A;&#x6808;,&#x7136;&#x540E;&#x7559;&#x7ED9;&#x4F60;&#x4E00;&#x4E2A; clean &#x7684;&#x5DE5;&#x4F5C;&#x72B6;&#x6001;,&#x5373;&#x5904;&#x4E8E;&#x4E0A;&#x4E00;&#x6B21;&#x6700;&#x65B0;&#x63D0;&#x4EA4;&#x5904;.</li>
@@ -777,7 +787,7 @@ git merge master
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Git 使用","level":"1.6","depth":1,"next":{"title":"使用教程","level":"1.6.1","depth":2,"path":"GitUse/git.md","ref":"GitUse/git.md","articles":[]},"previous":{"title":"npm","level":"1.5.2","depth":2,"path":"node/npm.md","ref":"node/npm.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":"https://wangxiaogang0629.github.io/blog/index.html"}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"GitUse/git.md","mtime":"2020-04-17T07:19:30.621Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-17T08:02:11.608Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Git 使用","level":"1.6","depth":1,"next":{"title":"使用教程","level":"1.6.1","depth":2,"path":"GitUse/git.md","ref":"GitUse/git.md","articles":[]},"previous":{"title":"npm","level":"1.5.2","depth":2,"path":"node/npm.md","ref":"node/npm.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":"https://wangxiaogang0629.github.io/blog/index.html"}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"GitUse/git.md","mtime":"2020-04-26T01:45:05.866Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-26T01:47:09.246Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
