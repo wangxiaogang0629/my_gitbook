@@ -23,6 +23,7 @@
     
 * [Node 相关](node/node.md)
     * [使用](node/node.md)
+    * [node版本管理](node/n.md)
     * [npm](node/npm.md)
 
 * [Git 使用](Gituse/git.md)
@@ -31,6 +32,9 @@
 * [GitBook](GitBookUse/README.md)
     * [使用教程](GitBookUse/GitBookUse.md)
     * [book.json 配置](GitBookUse/bookJson.md)
+ 
+* [开发工具相关](devtools/chromeDevTools.md)
+    * [chrome 浏览器调试工具](devtools/chromeDevTools.md)
 
 * [Reading](Reading/README.md)
     * [低风险创业](Reading/LowRiskEntrepreneurship.md)
