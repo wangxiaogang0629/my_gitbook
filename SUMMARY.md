@@ -18,6 +18,12 @@
 	* [Array](programExp/array.md)
 	* [String](programExp/string.md)
 
+* [android](android/adb.md)
+	* [adb 调试工具](android/adb.md)
+
+* [前端性能优化](performance/index.md)
+	* [性能优化](performance/index.md)
+
 * [微信小程序相关](wxMiniprogram/question.md)
     * [问题](wxMiniprogram/question.md)
     

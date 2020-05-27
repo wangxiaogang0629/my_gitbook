@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Reading · wxgBlog</title>
+        <title>android · wxgBlog</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -51,10 +51,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="LowRiskEntrepreneurship.html" />
+    <link rel="next" href="adb.html" />
     
     
-    <link rel="prev" href="../devtools/chromeDevTools.html" />
+    <link rel="prev" href="../programExp/string.html" />
     
 
     </head>
@@ -299,9 +299,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4" data-path="../android/adb.html">
+        <li class="chapter active" data-level="1.4" data-path="adb.html">
             
-                <a href="../android/adb.html">
+                <a href="adb.html">
             
                     
                     android
@@ -313,9 +313,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../android/adb.html">
+        <li class="chapter active" data-level="1.4.1" data-path="adb.html">
             
-                <a href="../android/adb.html">
+                <a href="adb.html">
             
                     
                     adb 调试工具
@@ -562,9 +562,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.11" data-path="./">
+        <li class="chapter " data-level="1.11" data-path="../Reading/">
             
-                <a href="./">
+                <a href="../Reading/">
             
                     
                     Reading
@@ -576,9 +576,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.11.1" data-path="LowRiskEntrepreneurship.html">
+        <li class="chapter " data-level="1.11.1" data-path="../Reading/LowRiskEntrepreneurship.html">
             
-                <a href="LowRiskEntrepreneurship.html">
+                <a href="../Reading/LowRiskEntrepreneurship.html">
             
                     
                     低风险创业
@@ -656,7 +656,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Reading</a>
+        <a href=".." >android</a>
     </h1>
 </div>
 
@@ -671,9 +671,65 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h3 id="&#x9605;&#x8BFB;&#x8BB0;&#x5F55;&#x5206;&#x4EAB;">&#x9605;&#x8BFB;&#x8BB0;&#x5F55;&#x5206;&#x4EAB;</h3>
+                                <h3 id="adb-&#x7684;&#x5168;&#x79F0;&#x4E3A;-android-debug-bridge&#xFF0C;&#x5C31;&#x662F;&#x8D77;&#x5230;&#x8C03;&#x8BD5;&#x6865;&#x7684;&#x4F5C;&#x7528;&#x3002;">Adb &#x7684;&#x5168;&#x79F0;&#x4E3A; Android Debug Bridge&#xFF0C;&#x5C31;&#x662F;&#x8D77;&#x5230;&#x8C03;&#x8BD5;&#x6865;&#x7684;&#x4F5C;&#x7528;&#x3002;</h3>
+<h2 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h2>
+<blockquote>
+<p>&#x7531;&#x4E8E;&#x73B0;&#x5728;&#x8C37;&#x6B4C;&#x63A8;&#x8350;&#x5927;&#x5BB6;&#x4F7F;&#x7528; android studio &#x5F00;&#x53D1;&#xFF0C;&#x5728;&#x5B89;&#x88C5; android studio &#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x4E0B;&#x9762;&#x7684;&#x8DEF;&#x5F84;&#x627E;&#x5230; adb &#x3002;&#x5728;&#x6B64;&#x8DEF;&#x5F84;&#x4E0B;&#x627E;&#x51FA;
+~/Library/Android/sdk/platform-tools</p>
+</blockquote>
+<h5 id="&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x627E;&#x5230;-adb-&#x8DEF;&#x5F84;">&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x627E;&#x5230; adb &#x8DEF;&#x5F84;</h5>
 <ul>
-<li><a href="LowRiskEntrepreneurship.html">&#x4F4E;&#x98CE;&#x9669;&#x521B;&#x4E1A;</a></li>
+<li>&#x6253;&#x5F00; Finder, <code>command + shift +g</code> &#x524D;&#x5F80;&#x6587;&#x4EF6;&#x5939; ~/Library/Android/sdk/platform-tools</li>
+</ul>
+<h5 id="&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;">&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</h5>
+<ul>
+<li><code>sudo vi ~/.bash_profile</code></li>
+<li>&#x589E;&#x52A0;&#x8BED;&#x53E5; <code>export PATH=${PATH}:~/Library/Android/sdk/platform-tools</code></li>
+<li><code>source ~/.bash_profile</code></li>
+<li>&#x53EF;&#x7528; <code>echo $PATH</code> &#x8F93;&#x51FA;&#x914D;&#x7F6E;&#x597D;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF; &#x68C0;&#x67E5;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x6210;&#x529F;</li>
+</ul>
+<h5 id="&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x68C0;&#x6D4B;adb&#x6210;&#x529F;">&#x7B2C;&#x4E09;&#x6B65;&#xFF1A;&#x68C0;&#x6D4B;adb&#x6210;&#x529F;</h5>
+<ul>
+<li>&#x7EC8;&#x7AEF;&#x8F93;&#x5165; adb &#x5C06;&#x4F1A;&#x663E;&#x793A; help &#x7B49;&#x4FE1;&#x606F;</li>
+</ul>
+<h2 id="&#x5E38;&#x7528;&#x547D;&#x4EE4;">&#x5E38;&#x7528;&#x547D;&#x4EE4;</h2>
+<ul>
+<li><p><code>adb devices</code> &#x663E;&#x793A;&#x5F53;&#x524D;&#x8FDE;&#x63A5;&#x7684;&#x5B89;&#x5353;&#x8BBE;&#x5907;</p>
+</li>
+<li><p><code>adb logcat -v time &gt; ~/Desktop/adb/log.txt</code> &#x6253;&#x5370; log &#x4FDD;&#x5B58;&#x5728;&#x6587;&#x4EF6;&#x4E2D;</p>
+</li>
+<li><p><code>adb install -r &#x5B89;&#x88C5;&#x5305;&#x8DEF;&#x5F84;</code> &#x5B89;&#x88C5; apk</p>
+<ul>
+<li><code>-l</code>&#x3000;&#x9501;&#x5B9A;&#x8BE5;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;</li>
+<li><code>-r</code>&#x3000;&#x66FF;&#x6362;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x5F3A;&#x5236;&#x5B89;&#x88C5;</li>
+<li><code>-t</code>&#x3000;&#x5141;&#x8BB8;&#x6D4B;&#x8BD5;&#x5305;</li>
+<li><code>-s</code>&#x3000;&#x628A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x5B89;&#x88C5;&#x5230;sd&#x5361;&#x4E0A;</li>
+<li><code>-d</code>&#x3000;&#x5141;&#x8BB8;&#x8FDB;&#x884C;&#x5C06;&#x89C1;&#x72B6;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x5B89;&#x88C5;&#x7684;&#x6BD4;&#x624B;&#x673A;&#x4E0A;&#x5E26;&#x7684;&#x7248;&#x672C;&#x4F4E;</li>
+<li><code>-g</code>&#x3000;&#x4E3A;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x6388;&#x4E88;&#x6240;&#x6709;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x6743;&#x9650;</li>
+</ul>
+</li>
+<li><p><code>adb connect ip&#x5730;&#x5740;</code> &#x901A;&#x8FC7;ip&#x5730;&#x5740;&#x8FDE;&#x63A5;&#x8BBE;&#x5907;</p>
+</li>
+<li><p><code>adb disconnect ip&#x5730;&#x5740;</code> &#x901A;&#x8FC7;ip&#x5730;&#x5740;&#x65AD;&#x5F00;&#x8BBE;&#x5907;&#x8FDE;&#x63A5;</p>
+</li>
+<li><code>adb shell ls</code> &#x663E;&#x793A;&#x8BBE;&#x5907;&#x6587;&#x4EF6;&#x76EE;&#x5F55;</li>
+</ul>
+<h2 id="&#x8FDE;&#x63A5;&#x624B;&#x673A;">&#x8FDE;&#x63A5;&#x624B;&#x673A;</h2>
+<h5 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x76F4;&#x63A5;&#x8FDE;&#x63A5;">&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;&#x76F4;&#x63A5;&#x8FDE;&#x63A5;</h5>
+<ul>
+<li>&#x76F4;&#x63A5;&#x7528; USB &#x8FDE;&#x63A5;</li>
+<li>&#x4F7F;&#x7528; <code>adb devices</code> &#x67E5;&#x770B;&#x8BBE;&#x5907;&#x662F;&#x5426;&#x5DF2;&#x8FDE;&#x63A5;</li>
+</ul>
+<h5 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;ip-&#x8FDE;&#x63A5;">&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;ip &#x8FDE;&#x63A5;</h5>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x7528; usb &#x8FDE;&#x63A5;&#x624B;&#x673A;&#xFF0C;&#x624B;&#x673A;&#x4E0D;&#x8981;&#x8FDE; wifi&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528; adb tcpip 5555</li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x62D4;&#x6389; usb &#x7EBF;&#xFF0C;&#x624B;&#x673A;&#x6253;&#x5F00; wifi &#x67E5;&#x8BE2; ip &#x5730;&#x5740;&#xFF0C;&#x4F7F;&#x7528; <code>adb connect ip</code> &#x8FDE;&#x63A5;&#x624B;&#x673A;&#x5373;&#x53EF;</li>
+<li>&#x6700;&#x540E;&#xFF1A;&#x4F7F;&#x7528; <code>adb devices</code> &#x67E5;&#x770B;&#x8BBE;&#x5907;&#x662F;&#x5426;&#x5DF2;&#x8FDE;&#x63A5;</li>
+</ul>
+<h2 id="&#x5C06;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x81F3;&#x624B;&#x673A;sd&#x5361;">&#x5C06;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x81F3;&#x624B;&#x673A;sd&#x5361;</h2>
+<ul>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x67E5;&#x8BE2;&#x624B;&#x673A;&#x8DEF;&#x5F84; sd &#x5361;&#x8DEF;&#x5F84;</li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;<code>adb push &#x6587;&#x4EF6;&#x8DEF;&#x5F84;</code></li>
 </ul>
 
                                 
@@ -702,12 +758,12 @@
 
             
                 
-                <a href="../devtools/chromeDevTools.html" class="navigation navigation-prev " aria-label="Previous page: chrome 浏览器调试工具">
+                <a href="../programExp/string.html" class="navigation navigation-prev " aria-label="Previous page: String">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="LowRiskEntrepreneurship.html" class="navigation navigation-next " aria-label="Next page: 低风险创业">
+                <a href="adb.html" class="navigation navigation-next " aria-label="Next page: adb 调试工具">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -718,7 +774,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Reading","level":"1.11","depth":1,"next":{"title":"低风险创业","level":"1.11.1","depth":2,"path":"Reading/LowRiskEntrepreneurship.md","ref":"Reading/LowRiskEntrepreneurship.md","articles":[]},"previous":{"title":"chrome 浏览器调试工具","level":"1.10.1","depth":2,"path":"devtools/chromeDevTools.md","ref":"devtools/chromeDevTools.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","livereload"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":"https://wangxiaogang0629.github.io/blog/index.html"}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"Reading/README.md","mtime":"2020-05-05T07:59:40.425Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-27T16:53:50.942Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"android","level":"1.4","depth":1,"next":{"title":"adb 调试工具","level":"1.4.1","depth":2,"path":"android/adb.md","ref":"android/adb.md","articles":[]},"previous":{"title":"String","level":"1.3.3","depth":2,"path":"programExp/string.md","ref":"programExp/string.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","livereload"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":"https://wangxiaogang0629.github.io/blog/index.html"}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"android/adb.md","mtime":"2020-05-27T16:53:32.429Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-27T16:53:50.942Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
