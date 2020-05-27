@@ -196,7 +196,7 @@
 	
 ### 三角形
 	.triangle { 
-	  border-color: red yellow blue green; 
+	  border-color: red yellow blue transparent; 
 	  border-style: solid; 
 	  border-width: 100px; 
 	  height: 0px; 
