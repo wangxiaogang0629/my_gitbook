@@ -31,3 +31,34 @@ Node.js 8.9 或更高版本 (推荐 8.11.0+)
 `vue create hello world`
 
 
+## 性能优化
+
+* defineReactive 数据冰冻 Object.freeze() 在修改后不需要进行响应式时
+* 扁平化数据 store
+* 列表渲染优化 窗口化（可视区域）
+	* vue-virtual-scroll-list
+* 骨架屏 使交互体验更好，处理页面加载时的白屏
+* 服务端渲染
+* 路由懒加载
+	* 例如：有些组件加载了 echart 等较大的库且首屏不需要展示时 可以使用懒加载
+* gzip 缓存控制 （通用优化策略）
+
+## 关键点
+* computed VS watch
+	* watch 相比于 computed 缺少缓存设置
+* v-if v-else v-show v-else-if
+* vue 如何监听数组变化
+	* 通过拦截了数组的方法
+* vue 生命周期
+* v-model 原理
+* 虚拟 dom
+	* 组件内虚拟 dom，组件外响应式
+
+* 测试 utils
+
+
+
+
+
+
+
