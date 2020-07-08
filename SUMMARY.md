@@ -7,10 +7,8 @@
     * [数据结构](newLearnWeb/dataStructure.md)
     * [book](newLearnWeb/book.md)
     * [css](newLearnWeb/css.md)
-    * [html & css](newLearnWeb/html & css.md)
+    * [html & css](newLearnWeb/htmlAndCss.md)
     * [HTML进阶](newLearnWeb/HTML_high.md)
-    * [js第一期](newLearnWeb/jsOne.md)
-    * [js第二期](newLearnWeb/jsTow.md)
     * [Linux命令](newLearnWeb/Linux.md)
     
 * [编程实例](programExp/readme.md)
@@ -47,5 +45,8 @@
 
 * [非洲鼓](AfricanDrum/readme.md)
     * [节奏型](AfricanDrum/rhythmType.md)
+   
+* [面试](interview/interview.md)
+    * [总结一](interview/interview.md)
 
     
