@@ -156,6 +156,39 @@
 * add 但不 commit，可以 stash，然后 checkout 回来之后 stash apply，在 commit，提交到当前分支
 * add 但不 commit，也不 stash，直接 checkout，然后再 commit 的话，记录就在切换分支下面。
 
+## github Fork
+> 参考 [掘金夏老师](https://juejin.im/post/6864462363039531022)
+
+* 第一步：Fork 代码
+* 第二步：`git clone github地址`
+* 第三步：安装依赖
+
+	```
+	# 设置国内镜像
+	yarn config set registry https://registry.npm.taobao.org
+	# --ignore-scripts  用于忽略chrome浏览器的下载
+	yarn install --ignore-scripts  
+	```
+* 第四步：开发前同步官方最新代码
+* 第五步：添加新远程分支, 只需要做一次 `git remote add upstream git地址`
+	* 源设置错误
+		*  `git remote remove <name>` 删除后重新添加
+	* 拉去合并远程分支到 master 分支
+	
+		```
+		# 抓取源仓库修改 master分支
+	 	git fetch upstream master
+		# 切换分支
+		git checkout master
+		# 合并远程分支
+		git merge upstream/master
+	
+		```
+* 第六步：开发
+	* 从 master 分支创建一个修改分支
+	* jest 测试
+	* 提交 PR
+
 ## 忽略文件 .gitignore
 
 > 有些文件无需纳入 Git 的管理，也不希望它们总出现在未跟踪文件列表，我们可以创建一个名为 .gitignore 的文件，列出要忽略的文件

@@ -64,4 +64,17 @@
 	* 函数节流不管事件触发有多频繁，都会保证在规定时间内一定会执行一次真正的事件处理函数，而函数防抖只是在最后一次事件后才触发一次函数。 比如在页面的无限加载场景下，我们需要用户在滚动页面时，每隔一段时间发一次 Ajax 请求，而不是在用户停下滚动页面操作时才去请求数据。这样的场景，就适合用节流技术来实现。
 
 	
+### 计算元素在滚动元素中的位置
 
+> 方法一
+
+* `Element.getBoundingClientRect()` 获取元素的大小及其相对于视口的位置
+* 元素 `currentNode ` 距离父容器 `parentNode ` 顶部高度 top
+
+	```
+	top = currentNode.getBoundingClientRect().top - parentNode.getBoundingClientRect().top
+	```
+
+> 方法二
+
+* `currentNode.offsetTop` 获取元素相对于其 `offsetParent` 元素的顶部内边距的距离
