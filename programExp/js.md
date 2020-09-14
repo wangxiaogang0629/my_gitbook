@@ -41,9 +41,6 @@
 * 雪碧图插件 webpack-spriteSmith 
 * 了解日常开发必备的脚手架是如何实现
 
-# 前端设计模式
-
-# js垃圾回收机制
 
 # 前端安全性问题
 
@@ -75,30 +72,6 @@
 		* ''	引号	&quot ;
 	* 使用正则对用户的输入进行过滤
 	* 设置 Cookie 的 HttpOnly 标记这样就不可以通过 Js 的 Document.cookie 进行获取
-
-
-# 跨域问题处理
-* 后端修改请求头
-* Nginx 反向代理
-
-# 前端数据加密
-
-# http相关
-* 3xx
-	* 304 服务器告诉客户，原来缓冲的文档还可以继续使用。
-* 4xx 客户端错误--请求有语法错误或请求无法实现
-	* 400 Bad Request 请求出现语法错误。
-	* 401 Unauthorized 客户试图未经授权访问受密码保护的页面。应答中会包含一个WWW-Authenticate头，浏览器据此显示用户名字/密码对话框，然后在填写合适的Authorization头后再次发出请求。
-	* 403 Forbidden 资源不可用。服务器理解客户的请求，但拒绝处理它。通常由于服务器上文件或目录的权限设置导致。
-	* 404 Not Found 无法找到指定位置的资源。这也是一个常用的应答。
-	* 405 Method Not Allowed 请求方法（GET、POST、HEAD、DELETE、PUT、TRACE等）对指定的资源不适用。（HTTP 1.1新）
-	* 413 Request Entity Too Large 目标文档的大小超过服务器当前愿意处理的大小
-* 5xx 服务器端错误--服务器未能实现合法的请求
-	* 500 Internal Server Error 服务器遇到了意料不到的情况，不能完成客户的请求。
-	* 502 Bad Gateway 服务器作为网关或者代理时，为了完成请求访问下一个服务器，但该服务器返回了非法的应答。
-	* 503 Service Unavailable 服务器由于维护或者负载过重未能应答。例如，Servlet可能在数据库连接池已满的情况下返回503。服务器返回503时可以提供一个Retry-After头。
-	* 504 Gateway Timeout 由作为代理或网关的服务器使用，表示不能及时地从远程服务器获得应答。（HTTP 1.1新）
-
 
 # 状态管理器相关
 
@@ -238,45 +211,6 @@
 	console.log(num1)
 	
 	```
-* Set
-	* 数组去重
-	* 按照插入的顺序排列
-	* 注意：keys, values 值相同
-	
-	```
-	let setArr = new Set([0, 3]);
-
-	// add		
-	setArr.add(0);
-	
-	// delete		
-	setArr. delete(1);
-	
-	// 交集差集
-	let setArr1 = new Set([1, 3, 5, 7, 2]);
-	let setArr2 = new Set([2, 4, 6, 8, 7, 3]);
-	
-	let setArr3 = new Set([...setArr1].filter(x => setArr2.has(x)));
-	let setArr3 = new Set([...setArr1].filter(x => !setArr2.has(x)));
-	
-	// 并集 (合并去重)
-	let setArr1 = new Set([1, 3, 5, 7, 2]);
-	let setArr2 = new Set([2, 4, 6, 8, 7, 3]);
-	
-	new Set([...setArr1, ...setArr2])
-	
-	```
-
-* Map
-	* 新数据类型
-	* key 可以使用不同类型（数字、数组、对象、函数）
-	* Map 的键实际上是跟内存地址绑定的，只要内存地址不一样，就视为两个键.
-	
-	```
-	let map1 = new Map();
-	
-	map1.set([0, 1, 2], 'res1') // (key, val)
-	```
 	
 # module
 * 编译时加载
@@ -326,10 +260,6 @@
 	}
 ```
 
-# 算法
-
-# 模块化
-
 # 错题整理
 
 * 1、H5获取当前位置信息 getCurrentPosition
@@ -362,165 +292,6 @@
 　　	// 采用链式写法 也可提升速度
 　　	
 　　```
-
-## 事件代理 “委托处理”
-
-* js 的事件模型，采用‘冒泡’模式，就是子元素的事件会逐级向上‘冒泡’，成为父元素的事件
-* 利用这一特性，可以简化事件的绑定
-
-```
-
-	// 例如：有一个list ul，里面有许多个item li，若要给每个item上面绑定一个点击事件
-	click），利用冒泡特性 我们不需要给每个li绑定事件，只需把事件绑定在父元素上，
-	当点击li的时候，这个事件会 ‘冒泡’到父元素，从而被监听到。
-
-	更好的写法，则是把事件绑定在document对象上
-	
-```
-
-* 选择作用域链最短的方法
-* 读取变量的时候，先在当前作用域寻找该变量，如果找不到，就前往上一层的作用域寻找该变量, 这样设计使得读取局部变量比读取全局变量快得多。
-
-```
-	var a = 0;
-
-　　function x(){
-　　　　a += 1;
-　　}
-
-　　function y(){
-　　　　var a = 0;
-　　　　a += 1;
-　　}
-
-	// 同理调用对象
-	// prototype模式：
-
-　　var X = function(name){ this.name = name; }
-
-　　X.prototype.get_name = function() { return this.name; };
-
-	// closure模式：
-
-　　var Y = function(name) {
-
-　　　　var y = { name: name };
-
-　　　　return { 'get_name': function() { return y.name; } };
-
-　　};
-```
-
-# 闭包
-
-* 闭包的产生源于 js特殊的变量作用域
-* 闭包是一种保护私有变量的机制，在函数执行时形成私有的作用域，保护里面的私有变量不受外界干扰,它使得函数拥有私有变量变成可能。
-* 变量作用域主要分全局变量和局部变量
-	* 在函数内部可以直接读取全局变量
-	* 在函数外部无法读取函数内的局部变量
-	* 为了想要读取它内部的变量 我们在函数1中定义一个函数2，这时f1内部的所有局部变量，对f2都是可见的，只要将函数2作为返回值，我们就可以在函数1外部读取它内部的变量了，而函数2，就是闭包。
-	* 闭包就是能够读取其他函数内部变量的函数。
-	* 其实根本上，闭包就是将函数内部和函数外部连接起来的一座桥梁。
-
-* 作用
-	* 可以读取函数内部的变量 
-	* 另一个就是让这些变量的值始终保持在内存中。
-	* 函数体中的函数就可都称之为闭包
-
-* 性能问题
-	* 如果不是某些特定任务需要使用闭包，在其它函数中创建函数是不明智的，因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响。
-
-```
-
-	// 反例
-	// 在创建新的对象或者类时，方法通常应该关联于对象的原型，而不是定义到对象的构造器中。原因是这	将导致每次构造器被调用时，方法都会被重新赋值一次（也就是，每个对象的创建）。
-	
-	function MyObject(name, message) {
-	  this.name = name.toString();
-	  this.message = message.toString();
-	  this.getName = function() {
-	    return this.name;
-	  };
-	
-	  this.getMessage = function() {
-	    return this.message;
-	  };
-	}
-	
-	// 正例
-	
-	function MyObject(name, message) {
-  	this.name = name.toString();
-	  	this.message = message.toString();
-	}
-	MyObject.prototype = {
-  		getName: function() {
-	    	return this.name;
-	  	},
-	 	getMessage: function() {
-	    	return this.message;
-  		}
-	};
-	
-	// 但不建议重新定义原型 修改如下
-	
-	MyObject.prototype.getName = function() {
-	  return this.name;
-	};
-	
-	
-	// 计数器为 3
-	var add = (function () {
-    var counter = 0;
-    return function () {return counter += 1;}
-	})();
- 
-	add();
-	add();
-	add();
-
-```
-
-
-# this 指针问题
-
-* this总是指向调用该方法的对象！
-
-```
-// window
-// window是对象而不是类，也就是说window是被实例化的对象,页面初始化的时候有js完成，整个页面都浓缩到这个window对象。
-
-var name = 'xiaogang';
-
-function funThis() {
-
-  console.log(this);
-
-  console.log(this.name);
-
-}
-
-// this 为 myObj
-var myObj={
-    name:"zhoulujun",
-    fn:function(){
-        console.log(this.name)
-    }
- 
-};
-myObj.fn();
-
-```
-
-# 检测js数据类型
-
-* instanceof
-* Object.prototype.toString.call()
-* Array/Object.prototype.isPrototypeOf()
-* typeof
-* *.constructor
-* Object.getPrototypeOf(arr) === Array.prototype
-* *.forEach
 
 # React
 
