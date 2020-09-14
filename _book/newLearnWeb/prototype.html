@@ -627,6 +627,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.13.2" data-path="../interview/interview2.html">
+            
+                <a href="../interview/interview2.html">
+            
+                    
+                    总结二
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -678,7 +691,93 @@
                                 <section class="normal markdown-section">
                                 
                                 <h3 id="&#x91CD;&#x5B66;&#x524D;&#x7AEF;">&#x91CD;&#x5B66;&#x524D;&#x7AEF;</h3>
-<h5 id="&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</h5>
+<h5 id="this">this</h5>
+<ul>
+<li><p>&#x4E8B;&#x4EF6;&#x8C03;&#x7528;&#x73AF;&#x5883; &#x8C01;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x51FD;&#x6570;&#x91CC;&#x9762;&#x7684; <code>this</code> &#x6307;&#x5411;&#x7684;&#x5C31;&#x662F;&#x8C01;</p>
+<ul>
+<li><p>&#x88AB;&#x5B9A;&#x4E49;&#x65F6; this &#x65E0;&#x610F;&#x4E49;&#xFF0C;&#x53EA;&#x6709;&#x5728;&#x8C03;&#x7528;&#x7684;&#x65F6;&#x5019; this &#x624D;&#x6709;&#x610F;&#x4E49;</p>
+<pre><code>let obj = {
+  a: 1,
+  b: function() {
+      console.log(this)
+  }
+}
+
+let a = window.obj.b
+
+a() // window
+</code></pre></li>
+</ul>
+</li>
+<li>&#x5168;&#x5C40;&#x73AF;&#x5883;&#x4E0B; <code>this</code> &#x6307;&#x5411;<ul>
+<li><code>window</code></li>
+<li><code>node</code> &#x73AF;&#x5883;&#x5728;&#x5355;&#x72EC;&#x7684; js &#x6587;&#x4EF6;&#x4E2D;&#x6307;&#x5411; <code>module.export</code></li>
+</ul>
+</li>
+<li>&#x51FD;&#x6570;&#x5185;&#x90E8;<ul>
+<li>&#x81EA;&#x8C03;&#x7528;&#x6307;&#x5411; window</li>
+<li>&#x4E25;&#x683C;&#x6A21;&#x5F0F; window.move() &#x6307;&#x5411; undefind</li>
+<li>&#x6700;&#x7EC8;&#x6307;&#x5411;&#x8C03;&#x7528;&#x5B83;&#x7684;&#x5BF9;&#x8C61;</li>
+<li>&#x5982;&#x679C;&#x51FD;&#x6570;&#x88AB;&#x591A;&#x5C42;&#x5BF9;&#x8C61;&#x5305;&#x542B;&#xFF0C;&#x5982;&#x679C;&#x51FD;&#x6570;&#x88AB;&#x6700;&#x5916;&#x5C42;&#x5BF9;&#x8C61;&#x8C03;&#x7528;&#xFF0C;this &#x6307;&#x5411;&#x7684;&#x4E5F;&#x53EA;&#x662F;&#x5B83;&#x4E0A;&#x4E00;&#x7EA7;</li>
+</ul>
+</li>
+<li>&#x6784;&#x9020;&#x51FD;&#x6570;<ul>
+<li>1.&#x8C03;&#x7528;&#x51FD;&#x6570;</li>
+<li>2.&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x5BF9;&#x8C61;</li>
+<li>3.&#x628A;&#x521B;&#x5EFA;&#x7684;&#x5BF9;&#x8C61;&#x548C; this &#x7ED1;&#x5B9A;</li>
+<li>4.&#x5982;&#x679C;&#x6784;&#x9020;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x8FD4;&#x56DE;&#x503C;&#xFF0C;&#x6216;&#x8005;&#x8FD4;&#x56DE;&#x503C;&#x4E0D;&#x4E3A;&#x5BF9;&#x8C61;&#xFF08;null &#x9664;&#x5916;&#xFF09;&#xFF0C;&#x5219;&#x8FD4;&#x56DE; this &#x5BF9;&#x8C61;</li>
+</ul>
+</li>
+<li>&#x7BAD;&#x5934;&#x51FD;&#x6570;<ul>
+<li>&#x89E3;&#x51B3;&#x4E86;&#x50CF; setTimeout &#x4E2D; this &#x6307;&#x5411; window &#x7684;&#x60C5;&#x51B5;</li>
+<li>&#x6839;&#x636E;&#x4E0A;&#x4E0B;&#x6587;&#x7684;&#x73AF;&#x5883; &#x6307;&#x5411;&#x4E0A;&#x4E00;&#x4E2A;&#x5BF9;&#x7ACB;&#x4F5C;&#x7528;&#x57DF; &#x4E14;&#x5728;&#x5B9A;&#x4E49;&#x65F6;&#x51B3;&#x5B9A;&#x4E86;&#x503C;</li>
+</ul>
+</li>
+<li><p>&#x4FEE;&#x6539; this &#x6307;&#x5411;</p>
+<ul>
+<li>call call({}, arg)</li>
+<li>apply call({}, [arg, arg]) &#x53EF;&#x4EE5;&#x4F20;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;</li>
+<li><p>bind &#x8C03;&#x7528;&#x65F6;&#x624D;&#x8FDB;&#x884C;&#x4FEE;&#x6539;</p>
+<pre><code>  let obj = {
+      b: function() =&gt; { console.log(this) }
+  }
+
+  obj.b() // window
+</code></pre><pre><code class="lang-x">function fn() {
+  this.num = 10
+}
+
+fn.num = 20
+fn.prototype.num = 30
+fn.prototype.method = function() {
+  console.log(this.num)
+}
+
+let prototype = fn.prototype
+let method = prototype.method
+
+new fn().method() // 10
+prototype.method() // 30
+method() // undefined window
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>// html
+&lt;div class=&apos;box1&apos;&gt;&lt;div&gt;
+&lt;div class=&apos;box2&apos;&gt;&lt;div&gt;
+
+// js
+
+let el = document.querySelect(&apos;.box1&apos;)
+
+el.onclick = move
+
+function move () {
+    this.style.left = &apos;100px&apos;
+}
+</code></pre><h5 id="&#x5BF9;&#x8C61;">&#x5BF9;&#x8C61;</h5>
 <ul>
 <li>&#x62E5;&#x6709;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x3001;&#x6709;&#x72B6;&#x6001;&#x3001;&#x6709;&#x884C;&#x4E3A;<ul>
 <li>&#x4EFB;&#x4F55;&#x4E0D;&#x540C;&#x7684;&#x5BF9;&#x8C61;&#x90FD;&#x4E92;&#x4E0D;&#x76F8;&#x7B49;&#x3001;&#x72B6;&#x6001;&#x548C;&#x884C;&#x4E3A;&#x5728;js&#x4E2D;&#x88AB;&#x79F0;&#x4F5C;&#x5C5E;&#x6027;</li>
@@ -809,7 +908,7 @@ oneMan.status();
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"原型","level":"1.2.1","depth":2,"next":{"title":"数据结构","level":"1.2.2","depth":2,"path":"newLearnWeb/dataStructure.md","ref":"newLearnWeb/dataStructure.md","articles":[]},"previous":{"title":"重学前端","level":"1.2","depth":1,"path":"newLearnWeb/readme.md","ref":"newLearnWeb/readme.md","articles":[{"title":"原型","level":"1.2.1","depth":2,"path":"newLearnWeb/prototype.md","ref":"newLearnWeb/prototype.md","articles":[]},{"title":"数据结构","level":"1.2.2","depth":2,"path":"newLearnWeb/dataStructure.md","ref":"newLearnWeb/dataStructure.md","articles":[]},{"title":"book","level":"1.2.3","depth":2,"path":"newLearnWeb/book.md","ref":"newLearnWeb/book.md","articles":[]},{"title":"css","level":"1.2.4","depth":2,"path":"newLearnWeb/css.md","ref":"newLearnWeb/css.md","articles":[]},{"title":"html & css","level":"1.2.5","depth":2,"path":"newLearnWeb/htmlAndCss.md","ref":"newLearnWeb/htmlAndCss.md","articles":[]},{"title":"HTML进阶","level":"1.2.6","depth":2,"path":"newLearnWeb/HTML_high.md","ref":"newLearnWeb/HTML_high.md","articles":[]},{"title":"Linux命令","level":"1.2.7","depth":2,"path":"newLearnWeb/Linux.md","ref":"newLearnWeb/Linux.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":""}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"newLearnWeb/prototype.md","mtime":"2020-05-05T07:59:40.455Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-08T02:49:32.571Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"原型","level":"1.2.1","depth":2,"next":{"title":"数据结构","level":"1.2.2","depth":2,"path":"newLearnWeb/dataStructure.md","ref":"newLearnWeb/dataStructure.md","articles":[]},"previous":{"title":"重学前端","level":"1.2","depth":1,"path":"newLearnWeb/readme.md","ref":"newLearnWeb/readme.md","articles":[{"title":"原型","level":"1.2.1","depth":2,"path":"newLearnWeb/prototype.md","ref":"newLearnWeb/prototype.md","articles":[]},{"title":"数据结构","level":"1.2.2","depth":2,"path":"newLearnWeb/dataStructure.md","ref":"newLearnWeb/dataStructure.md","articles":[]},{"title":"book","level":"1.2.3","depth":2,"path":"newLearnWeb/book.md","ref":"newLearnWeb/book.md","articles":[]},{"title":"css","level":"1.2.4","depth":2,"path":"newLearnWeb/css.md","ref":"newLearnWeb/css.md","articles":[]},{"title":"html & css","level":"1.2.5","depth":2,"path":"newLearnWeb/htmlAndCss.md","ref":"newLearnWeb/htmlAndCss.md","articles":[]},{"title":"HTML进阶","level":"1.2.6","depth":2,"path":"newLearnWeb/HTML_high.md","ref":"newLearnWeb/HTML_high.md","articles":[]},{"title":"Linux命令","level":"1.2.7","depth":2,"path":"newLearnWeb/Linux.md","ref":"newLearnWeb/Linux.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","livereload"],"styles":{"website":"/styles/website.css"},"pluginsConfig":{"expandable-chapters-small":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"wxg","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"wxgBlog","language":"zh-hans","links":{"sidebar":{"我的博客":""}},"gitbook":"3.2.3","description":"记录分享个人技术和生活感悟"},"file":{"path":"newLearnWeb/prototype.md","mtime":"2020-06-19T07:07:32.410Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-14T01:33:43.863Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -820,6 +919,10 @@ oneMan.status();
     
         
         <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         

@@ -24,16 +24,77 @@
 > 判断数据类型
 
 * instanceof
+	* 内部机制是通过原型链来判断
+	* 但是对于原始类型来说，你想直接通过 instanceof 来判断类型是不行的，当然我们还是有办法让 instanceof 判断原始类型的
+		
+		```
+		// 自定义 instanceof 行为
+		// 代码等同于 typeof 'hello world' === 'string'
+		class PrimitiveString {
+		  static [Symbol.hasInstance](x) {
+		    return typeof x === 'string'
+		  }
+		}
+		console.log('hello world' instanceof PrimitiveString) // true
+		```
 * Object.prototype.toString.call()
 * Array/Object.prototype.isPrototypeOf()
 * typeof
+	* typeof 对于原始类型来说，除了 null 都可以显示正确的类型
+	
+		```
+		typeof 1 // 'number'
+		typeof '1' // 'string'
+		typeof undefined // 'undefined'
+		typeof true // 'boolean'
+		typeof Symbol() // 'symbol'
+		typeof null // 'object'
+		```
+	* typeof 对于对象来说，除了函数都会显示 object，所以说 typeof 并不能准确判断变量到底是什么类型
+	
+		```
+		typeof [] // 'object'
+		typeof {} // 'object'
+		typeof console.log // 'function'
+		```
 * .constructor
 * Object.getPrototypeOf(arr) === Array.prototype
 * .forEach
 
 > ES6 新增内容
 
-* 使用 let 解决var 变量的作用域和重复定义问题
+* 使用 let 解决 var 变量的作用域和重复定义问题
+	* var 变量提升
+	* 函数也会提升，并且优先于变量提升
+	* 使用 var 声明的变量会被提升到作用域的顶部
+	* let、const 因为暂时性死区的原因，不能在声明前使用
+* 什么要存在提升这个事情呢 ?
+	* 其实提升存在的根本原因就是为了解决函数间互相调用的情况
+
+	```
+	function test1() {
+    test2()
+	}
+	function test2() {
+	    test1()
+	}
+	test1()
+	```
+	
+	```
+	var a = 1
+	let b = 1
+	const c = 1
+	console.log(window.a) // 1
+	console.log(window.b) // undefined
+	console.log(window.c) // undefined
+	
+	function test(){
+	  console.log(a)
+	  let a
+	}
+	test()
+	```
 * 解构赋值
 * 异步处理
 	* Promise、ansync
@@ -157,33 +218,24 @@
 * 读取变量的时候，先在当前作用域寻找该变量，如果找不到，就前往上一层的作用域寻找该变量, 这样设计使得读取局部变量比读取全局变量快得多。
 
 	```
-		var a = 0;
-		
-	　　function x(){
-	　　　　a += 1;
-	　　}
-		
-	　　function y(){
-	　　　　var a = 0;
-	　　　　a += 1;
-	　　}
-		
-		// 同理调用对象
-		// prototype模式：
-		
+	var a = 0;
+	function x(){
+	　　a += 1;
+	}
+	function y(){
+	　　var a = 0;
+	　　a += 1;
+	}
+	// 同理调用对象
+	// prototype模式：
 	　　var X = function(name){ this.name = name; }
-		
 	　　X.prototype.get_name = function() { return this.name; };
+	// closure模式：
+	var Y = function(name) {
+	　　var y = { name: name };
 		
-		// closure模式：
-		
-	　　var Y = function(name) {
-		
-	　　　　var y = { name: name };
-		
-	　　　　return { 'get_name': function() { return y.name; } };
-		
-	　　};
+	　　return { 'get_name': function() { return y.name; } };
+	};
 	```
 
 > 闭包
@@ -205,59 +257,93 @@
 * 性能问题
 	* 如果不是某些特定任务需要使用闭包，在其它函数中创建函数是不明智的，因为闭包在处理速度和内存消耗方面对脚本性能具有负面影响。
 
-		```
-		// 反例
-		// 在创建新的对象或者类时，方法通常应该关联于对象的原型，而不是定义到对象的构造器中。原因是这将导致每次构造器被调用时，方法都会被重新赋值一次（也就是，每个对象的创建）。
+	```
+	// 反例
+	// 在创建新的对象或者类时，方法通常应该关联于对象的原型，而不是定义到对象的构造器中。原因是这将导致每次构造器被调用时，方法都会被重新赋值一次（也就是，每个对象的创建）。
+	function MyObject(name, message) {
+	  this.name = name.toString();
+	  this.message = message.toString();
+	  this.getName = function() {
+	    return this.name;
+	  };
+	
+	  this.getMessage = function() {
+	    return this.message;
+	  };
+	}
+	
+	// 正例
+	function MyObject(name, message) {
+  	this.name = name.toString();
+	  	this.message = message.toString();
+	}
+	MyObject.prototype = {
+  		getName: function() {
+	    	return this.name;
+	  	},
+	 	getMessage: function() {
+	    	return this.message;
+  		}
+	};
 		
-		function MyObject(name, message) {
-		  this.name = name.toString();
-		  this.message = message.toString();
-		  this.getName = function() {
-		    return this.name;
-		  };
-		
-		  this.getMessage = function() {
-		    return this.message;
-		  };
-		}
-		
-		// 正例
-		
-		function MyObject(name, message) {
-	  	this.name = name.toString();
-		  	this.message = message.toString();
-		}
-		MyObject.prototype = {
-	  		getName: function() {
-		    	return this.name;
-		  	},
-		 	getMessage: function() {
-		    	return this.message;
-	  		}
-		};
-		
-		// 但不建议重新定义原型 修改如下
-		
-		MyObject.prototype.getName = function() {
-		  return this.name;
-		};
-		
-		
-		// 计数器为 3
-		var add = (function () {
-	    var counter = 0;
-	    return function () {return counter += 1;}
-		})();
-	 
-		add();
-		add();
-		add();
-		```
+	// 但不建议重新定义原型 修改如下
+	
+	MyObject.prototype.getName = function() {
+	  return this.name;
+	};
+	
+	// 计数器为 3
+	var add = (function () {
+    var counter = 0;
+    return function () {return counter += 1;}
+	})();
+ 
+	add();
+	add();
+	add();
+	```
+	
+	```
+	// 循环中使用闭包解决 `var` 定义函数的问题
+	for (var i = 1; i <= 5; i++) {
+	  setTimeout(function timer() {
+	    console.log(i)
+	  }, i * 1000)
+	}
+	
+	// 解1：
+	for (var i = 1; i <= 5; i++) {
+	  ;(function(j) {
+	    setTimeout(function timer() {
+	      console.log(j)
+	    }, j * 1000)
+	  })(i)
+	}
+	
+	// 解2：
+	for (var i = 1; i <= 5; i++) {
+	  setTimeout(
+	    function timer(j) {
+	      console.log(j)
+	    },
+	    i * 1000,
+	    i
+	  )
+	}
+	// 解3:
+	for (let i = 1; i <= 5; i++) {
+	  setTimeout(function timer() {
+	    console.log(i)
+	  }, i * 1000)
+	}
+	```
 
 
 > this 指针问题
 
 * this总是指向调用该方法的对象！
+* 箭头函数其实是没有 this 的，箭头函数中的 this 只取决包裹箭头函数的第一个普通函数的 this, 箭头函数的 this 一旦被绑定，就不会再被任何方式所改变
+* bind 多次，函数 中的 this 永远由第一次 bind 决定
 
 	```
 	// window
@@ -284,10 +370,35 @@
 	myObj.fn();
 	
 	```
+	
+	```
+	// fn.bind().bind(a) 等于
+	let fn2 = function fn1() {
+	  return function() {
+	    return fn.apply()
+	  }.apply(a)
+	}
+	fn2()
+	```
 
 > 原型链
 
+* 通过 `__proto__` 找到一个原型对象
+
+### 继承
+class 语法糖，本质还是函数
+class 实现继承的核心在于使用 extends 表明继承自哪个父类，并且在子类构造函数中必须调用 super
+
 > 浅拷贝 vs 深拷贝
+
+```
+let a = {
+  age: 1
+}
+let b = a
+a.age = 2
+console.log(b.age) // 2
+```
 
 #### 浅拷贝特点
 
@@ -295,11 +406,55 @@
 * 复制对象和原对象在发生修改时，会同时修改
 * 只是增加了一个指针指向已存在的内存地址
 
+* 通过 Object.assign 来解决这个问题，很多人认为这个函数是用来深拷贝的。其实并不是，Object.assign 只会拷贝所有的属性值到新的对象中，如果属性值是对象的话，拷贝的是地址，所以并不是深拷贝
+* 另外我们还可以通过展开运算符 ... 来实现浅拷贝
+
+```
+let a = {
+  age: 1
+}
+let b = Object.assign({}, a) || { ...a }
+a.age = 2
+console.log(b.age) // 1
+```
+* 通常浅拷贝就能解决大部分问题了，但是当我们遇到如下情况就可能需要使用到深拷贝了
+* 浅拷贝只解决了第一层的问题，如果接下去的值中还有对象的话，那么就又回到最开始的话题了，两者享有相同的地址。要解决这个问题，我们就得使用深拷贝了
+
+```
+let a = {
+  age: 1,
+  jobs: {
+    first: 'FE'
+  }
+}
+let b = { ...a }
+a.jobs.first = 'native'
+console.log(b.jobs.first) // native
+```
+
 #### 深拷贝特点
 
 * 值类型
 * 复制对象和原对象在发生修改时，不会同时修改
 * 是增加了一个指针并且申请了一个新的内存，使这个增加的指针指向这个新的内存
+* 这个问题通常可以通过 JSON.parse(JSON.stringify(object)) 来解决
+	* 但是该方法也是有局限性的：
+
+	* 会忽略 undefined
+	* 会忽略 symbol
+	* 不能序列化函数
+	* 不能解决循环引用的对象
+
+	```
+	let a = {
+	  age: undefined,
+	  sex: Symbol('male'),
+	  jobs: function() {},
+	  name: 'yck'
+	}
+	let b = JSON.parse(JSON.stringify(a))
+	console.log(b) // {name: "yck"}
+	```
 	
 	```
 	// 浅拷贝
@@ -423,7 +578,6 @@
 	* 当然在remaining这段时间中如果又一次触发事件，那么会取消当前的计时器，并重新计算一个remaining来判断当前状态。
 
 		```
-		
 		let timer = null;
 		let startTime = Date.now();
 	
@@ -442,8 +596,6 @@
 			    	console.log('settimeout 执行函数');
 			    }, remaining);              
 			}      
-	
-	
 		});
 		```
 	
