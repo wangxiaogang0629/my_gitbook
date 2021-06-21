@@ -173,6 +173,117 @@ Node.js 8.9 或更高版本 (推荐 8.11.0+)
 
 * 条件断点
 
+#### 计算属性 computed
+
+* 将模版中复杂的判断利用计算属性
+* 有缓存性 值未发生变化时不会渲染
+* 适用场景：多个值发生变化，影响一个值
+
+#### 侦听器 第一次不会执行
+
+* 使用带选项的侦听器立即执行 `immediate: true`
+* 如果监听的数据结构很深 `设置 deep: true`
+* 适用场景：一个值发生变化，会影响多个值（适合异步操作或者较大开销的操作）
+
+#### lodash 防抖处理
+
+#### 生命周期
+
+```
+三个阶段:初始化、更新、销毁
+初始化:beforeCreate、created、beforeMount、mounted
+更新:beforeUpdate、updated
+销毁:beforeDestroy、destroyed
+
+beforeCreate(){} // 执行时组件实例还未创建，通常用于插件开发中执行一些初始化任务 created(){} // 组件初始化完毕，各种数据可以使用，常用于异步数据获取 beforeMount(){} // 未执行渲染、更新，dom未创建
+mounted(){} // 初始化结束，dom已创建，可用于获取访问数据和dom元素 beforeUpdate(){} // 更新前，可用于获取更新前各种状态
+updated(){} // 更新后，所有状态已是最新
+beforeDestroy(){} // 销毁前，可用于一些定时器或订阅的取消
+destroyed(){} // 组件已销毁，作用同上
+```
+
+* beforeDestory 销毁定时器等
+
+#### 核心api
+
+* vue.set() 添加 使得动态添加的属性具有响应式
+* vue.delete 删除
+* 事件总线 处理跨页面通信 / 类似于 vuex 的作用
+	* 例如：产生一个message 在另外一个页面中删除
+* ref 可以进行dom 操作
+	* 可以调用组件内部的放法操作组件
+
+#### 过滤器 filter
+
+* 接受一个值返回一个值
+* 应用场景：对数据进行修饰处理
+
+#### 自定义指令 复用
+
+* 应用场景：需要对普通的DOM元素进行底层操作 
+* 钩子函数
+	* bind 调用一次，第一次绑定时
+	* inserted 被插入到父节点时
+	* update 所有组件更新时
+	* componenntUpdate
+	* unbind
+	
+	```
+	Vue.directive('role', {
+		inserted: (el, binding) => {
+			if ('admin' !== binding.value) return false
+		}
+	})
+	```
+#### 渲染函数 render
+
+* 返回 createElement VDOM
+
+#### 函数式组件 优化
+* function true
+* 组件没有生命周期、没有管理状态、没有监听，不做数据响应式
+
+#### 混入 mixin 
+
+* 特点：是一个对象
+* 来分发组件中的可复用功能
+* 所有混入的对象都被混合进入该组件本身的选项
+
+```
+// demo
+const hello = {
+	create () {
+		this.hello()
+	},
+	methods: {
+		hello () {
+			console.log('hello word')
+		}
+	}
+}
+```
+
+#### 插件
+
+#### 组件缓存
+
+* keep-alive 
+
+```
+//  page
+// include、max、exclude
+<keep-alive :include="page"> </keep-alive>
+```
+#### 获取数据
+* 导航后
+
+```
+create () {},
+watch: {
+	'$route': 'fentchData'
+}
+```
+
 
 
 
