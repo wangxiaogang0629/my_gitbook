@@ -18,4 +18,3 @@
 * Store 是存储数据的地方，整个应用中只有一个 store
 * State 是某个时点 store 数据，当前时刻的数据可通过 `store.getState` 拿到
 * Action 是 View 发出的通知，表示 state 有更新 
-* 
